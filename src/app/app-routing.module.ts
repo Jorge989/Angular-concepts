@@ -2,11 +2,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ViewsModule } from './views/views.module';
 const routes: Routes = [
+  {
+    path: 'views',
+    loadChildren: () =>
+      import('./views/views.module').then((m) => m.ViewsModule),
+  },
   {
     path: 'elements',
     loadChildren: () =>
       import('./elements/elements.module').then((m) => m.ElementsModule),
+  },
+  {
+    path: 'mods',
+    loadChildren: () => import('./mods/mods.module').then((m) => m.ModsModule),
   },
   {
     path: 'collections',
